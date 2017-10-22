@@ -13,20 +13,20 @@ this version of the pkg is in [![opspec 0.1.5](https://img.shields.io/badge/opsp
 ## install
 
 ```shell
-opctl pkg install github.com/opspec-pkgs/_.pkg.create#1.0.0
+opctl pkg install github.com/opspec-pkgs/_.pkg.create#1.0.1
 ```
 
 ## run
 
 ```
-opctl run github.com/opspec-pkgs/_.pkg.create#1.0.0
+opctl run github.com/opspec-pkgs/_.pkg.create#1.0.1
 ```
 
 ## compose
 
 ```yaml
 op:
-  pkg: { ref: github.com/opspec-pkgs/_.pkg.create#1.0.0 }
+  pkg: { ref: github.com/opspec-pkgs/_.pkg.create#1.0.1 }
   inputs:
     githubAccessToken:
     name:
@@ -38,7 +38,7 @@ op:
 join us on
 [![Slack](https://opspec-slackin.herokuapp.com/badge.svg)](https://opspec-slackin.herokuapp.com/)
 or
-[open an issue](https://github.com/opspec-pkgs/azure.storage.account.key.get/issues)
+[open an issue](https://github.com/opspec-pkgs/_.pkg.create/issues)
 
 # Releases
 
