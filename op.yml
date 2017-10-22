@@ -4,12 +4,13 @@ inputs:
   githubAccessToken:
     string:
       constraints: { minLength: 1 }
+      isSecret: true
       description: >
         personal access token for github; see
         https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/ for how to create a github access token.
         It will need scopes admin:org, repo, and admin:repo_hook.
         > note: before running for the first time, you will have to authorize travis-ci to access the opspec-pkgs org on your behalf; see https://github.com/settings/connections/applications/f244293c729d5066cf27
-        > there is currently no way to automate this initial authorization. 
+        > there is currently no way to automate this initial authorization.
   name:
     string:
       constraints: { minLength: 3 }
@@ -18,7 +19,7 @@ inputs:
     string:
       constraints: { minLength: 1 }
       description: description of the pkg
-version: 1.0.0
+version: 1.0.1
 run:
   serial:
     - op:
