@@ -1,5 +1,13 @@
 name: github.com/opspec-pkgs/_.pkg.create
-description: internal pkg for opspec-pkgs/maintainers which automates creation of an official pkg
+description: |
+  Internal pkg for opspec-pkgs/maintainers which automates creation of an official pkg.
+
+  includes:
+  - creation of github repo
+  - adding maintainers team as admins of repo
+  - cloning github repo
+  - generation of op.yml
+  - running [bootstrap](https://github.com/opspec-pkgs/_.pkg.bootstrap)
 inputs:
   githubAccessToken:
     string:
@@ -13,6 +21,9 @@ inputs:
         > note: before running for the first time, you will have to authorize travis-ci to access the opspec-pkgs org on your behalf;
         > see https://github.com/settings/connections/applications/f244293c729d5066cf27
         > there is currently no way to automate this initial authorization.
+  githubUsername:
+    string:
+      constraints: { minLength: 1 }
   name:
     string:
       constraints: { minLength: 3 }
@@ -21,7 +32,14 @@ inputs:
     string:
       constraints: { minLength: 1 }
       description: description of the pkg
-version: 1.0.2
+  srcDir:
+    dir:
+      description: pkg will be initialized and cloned to `name` subdir
+outputs:
+  srcDir:
+    dir:
+      description: as provided plus a new subdir containing initialized pkg
+version: 2.0.0
 run:
   serial:
     - op:
@@ -45,3 +63,43 @@ run:
         inputs:
           githubAccessToken:
           repo: opspec-pkgs/$(name)
+    - op:
+        pkg: { ref: github.com/opspec-pkgs/git.clone-https#1.0.0 }
+        inputs:
+          url: https://github.com/opspec-pkgs/$(name).git
+          username: $(githubUsername)
+          password: $(githubAccessToken)
+        outputs:
+          $(gitRepo): repo
+    - op:
+        pkg: { ref: github.com/opspec-pkgs/handlebarsjs.render-dir#1.0.0 }
+        inputs:
+          data:
+            name: $(name)
+            description: $(description)
+          templates: $(/templates)
+        outputs:
+          renderedTemplates: result
+    - op:
+        pkg: { ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0}
+        inputs:
+          src: $(renderedTemplates)
+          dst: $(srcDir)
+          dstPath: /$(name)
+        outputs:
+          srcDir:
+    - op:
+        pkg: { ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0}
+        inputs:
+          src: $(gitRepo)
+          dst: $(srcDir)
+          dstPath: /$(name)
+        outputs:
+          srcDir:
+    - op:
+        pkg: { ref: github.com/opspec-pkgs/_.pkg.bootstrap#1.0.0 }
+        inputs:
+          githubAccessToken:
+          srcDir:
+        outputs:
+          srcDir:
