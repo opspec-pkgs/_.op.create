@@ -1,5 +1,8 @@
 name: build
-description: Provisions a container image for use by the op with ref `opspecpkgs/$(opDotYml.name):${opDotYml.version}`
+description: |
+  Provisions image for the pkg w/ name `opspecpkgs/$(opDotYml.name):${opDotYml.version}`.
+  
+  > Before first use, a Dockerfile MUST be added to `.opspec/provision-image`
 inputs:
   dockerUsername:
     string:
@@ -22,7 +25,7 @@ run:
     - op:
         pkg: { ref: github.com/opspec-pkgs/docker.image.build#2.0.0 }
         inputs:
-          dockerfile: $(srcDir/Dockerfile)
+          dockerfile: $(/Dockerfile)
           imageName: 'opspecpkgs/$(opDotYml.name):$(opDotYml.version)'
         outputs: { imageTar }
     - op:
