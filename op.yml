@@ -65,14 +65,6 @@ run:
           githubAccessToken:
           repo: opspec-pkgs/$(name)
     - op:
-        pkg: { ref: github.com/opspec-pkgs/git.clone-https#1.0.0 }
-        inputs:
-          url: https://github.com/opspec-pkgs/$(name).git
-          username: $(githubUsername)
-          password: $(githubAccessToken)
-        outputs:
-          $(gitRepo): repo
-    - op:
         pkg: { ref: github.com/opspec-pkgs/handlebarsjs.render-dir#1.0.0 }
         inputs:
           data:
@@ -96,9 +88,17 @@ run:
         outputs:
           srcDir:
     - op:
+        pkg: { ref: github.com/opspec-pkgs/git.clone-https#1.0.0 }
+        inputs:
+          url: https://github.com/opspec-pkgs/$(name).git
+          username: $(githubUsername)
+          password: $(githubAccessToken)
+        outputs:
+          clonedGitRepo: repo
+    - op:
         pkg: { ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0}
         inputs:
-          src: $(gitRepo)
+          src: $(clonedGitRepo)
           dst: $(srcDir)
           dstPath: /$(name)
         outputs:
