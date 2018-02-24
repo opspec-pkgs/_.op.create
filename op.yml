@@ -35,6 +35,7 @@ inputs:
   srcDir:
     dir:
       description: pkg will be initialized and cloned to `name` subdir
+      default: .
 outputs:
   srcDir:
     dir:
