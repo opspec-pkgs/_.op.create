@@ -68,7 +68,7 @@ run:
         pkg: { ref: github.com/opspec-pkgs/handlebarsjs.render-dir#1.0.0 }
         inputs:
           data:
-            name: $(name)
+            name: github.com/opspec-pkgs/$(name)
             description: $(description)
           templates: $(/templates)
         outputs:
