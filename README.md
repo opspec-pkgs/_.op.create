@@ -40,6 +40,7 @@ inputs:
     githubAccessToken:
     githubUsername:
     name:
+    # params w/ default
     srcDir:
 outputs:
     srcDir:
