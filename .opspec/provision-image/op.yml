@@ -1,0 +1,34 @@
+name: build
+description: Provisions a container image for use by the op with ref `opspecpkgs/$(opDotYml.name):${opDotYml.version}`
+inputs:
+  dockerUsername:
+    string:
+      constraints: { minLength: 1 }
+      description: user for logging in to docker hub
+  dockerPassword:
+    string:
+      constraints: { minLength: 1 }
+      description: password for logging in to docker hub
+      isSecret: true
+  srcDir:
+    dir:
+      default: .
+run:
+  serial:
+    - op:
+        pkg: { ref: github.com/opspec-pkgs/yaml.parse#1.0.0 }
+        inputs: { yaml: $(srcDir/op.yml) }
+        outputs: { opDotYml: result }
+    - op:
+        pkg: { ref: github.com/opspec-pkgs/docker.image.build#2.0.0 }
+        inputs:
+          dockerfile: $(srcDir/Dockerfile)
+          imageName: 'opspecpkgs/$(opDotYml.name):$(opDotYml.version)'
+        outputs: { imageTar }
+    - op:
+        pkg: { ref: github.com/opspec-pkgs/docker.image.push#2.0.0 }
+        inputs:
+          imageTar:
+          imageName: 'opspecpkgs/$(opDotYml.name):$(opDotYml.version)'
+          username: $(dockerUsername)
+          password: $(dockerPassword)

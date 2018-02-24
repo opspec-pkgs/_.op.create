@@ -2,7 +2,15 @@
 
 # Problem statement
 
-internal pkg for opspec-pkgs/maintainers which automates creation of an official pkg
+Internal pkg for opspec-pkgs/maintainers which automates creation of an official pkg.
+
+includes:
+- creation of github repo
+- adding maintainers team as admins of repo
+- cloning github repo
+- generation of op.yml
+- running [bootstrap](https://github.com/opspec-pkgs/_.pkg.bootstrap)
+
 
 # Format
 
@@ -10,27 +18,31 @@ this version of the pkg is in [![opspec 0.1.5](https://img.shields.io/badge/opsp
 
 # Example usage
 
-## install
+## Install
 
 ```shell
-opctl pkg install github.com/opspec-pkgs/_.pkg.create#1.0.2
+opctl pkg install github.com/opspec-pkgs/_.pkg.create#2.0.0
 ```
 
-## run
+## Run
 
 ```
-opctl run github.com/opspec-pkgs/_.pkg.create#1.0.2
+opctl run github.com/opspec-pkgs/_.pkg.create#2.0.0
 ```
 
-## compose
+## Compose
 
 ```yaml
 op:
-  pkg: { ref: github.com/opspec-pkgs/_.pkg.create#1.0.2 }
-  inputs:
-    githubAccessToken:
-    name:
+pkg: { ref: github.com/opspec-pkgs/_.pkg.create#2.0.0 }
+inputs:
     description:
+    githubAccessToken:
+    githubUsername:
+    name:
+    srcDir:
+outputs:
+    srcDir:
 ```
 
 # Support
