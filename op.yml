@@ -80,11 +80,17 @@ run:
             description: $(description)
           templates: $(/templates)
         outputs:
-          renderedTemplates: result
+          renderedPkg: result
+    - op:
+        pkg: { ref: github.com/opspec-pkgs/_.pkg.bootstrap#1.0.0 }
+        inputs:
+          srcDir: $(renderedPkg)
+        outputs:
+          bootstrappedPkg:
     - op:
         pkg: { ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0}
         inputs:
-          src: $(renderedTemplates)
+          src: $(bootstrappedPkg)
           dst: $(srcDir)
           dstPath: /$(name)
         outputs:
@@ -95,11 +101,5 @@ run:
           src: $(gitRepo)
           dst: $(srcDir)
           dstPath: /$(name)
-        outputs:
-          srcDir:
-    - op:
-        pkg: { ref: github.com/opspec-pkgs/_.pkg.bootstrap#1.0.0 }
-        inputs:
-          srcDir:
         outputs:
           srcDir:
