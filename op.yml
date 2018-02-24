@@ -78,7 +78,7 @@ run:
         inputs:
           srcDir: $(renderedPkg)
         outputs:
-          bootstrappedPkg:
+          bootstrappedPkg: srcDir
     - op:
         pkg: { ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0}
         inputs:
