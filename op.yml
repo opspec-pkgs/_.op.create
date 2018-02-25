@@ -4,7 +4,7 @@ description: |
 
   includes:
   - creation of github repo
-  - adding maintainers team as admins of repo
+  - granting [opspec-pkgs/maintainers team](https://github.com/orgs/opspec-pkgs/teams/maintainers/members) admin permissions
   - cloning github repo
   - generation of op.yml
   - running [bootstrap](https://github.com/opspec-pkgs/_.pkg.bootstrap)
