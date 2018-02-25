@@ -22,16 +22,23 @@ run:
         pkg: { ref: github.com/opspec-pkgs/yaml.parse#1.0.0 }
         inputs: { yaml: $(srcDir/op.yml) }
         outputs: { opDotYml: result }
+    - container:
+        image: { ref: 'alpine:3.6' }
+        cmd: [sh, -ce, 'echo -n opspecpkgs/${opName#*/*/}:$(opDotYml.version) > /imageName']
+        envVars:
+          opName: $(opDotYml.name)
+        files:
+          /imageName: $(imageName)
     - op:
         pkg: { ref: github.com/opspec-pkgs/docker.image.build#2.0.0 }
         inputs:
           dockerfile: $(/Dockerfile)
-          imageName: 'opspecpkgs/$(opDotYml.name):$(opDotYml.version)'
+          imageName:
         outputs: { imageTar }
     - op:
         pkg: { ref: github.com/opspec-pkgs/docker.image.push#2.0.0 }
         inputs:
           imageTar:
-          imageName: 'opspecpkgs/$(opDotYml.name):$(opDotYml.version)'
+          imageName:
           username: $(dockerUsername)
           password: $(dockerPassword)
