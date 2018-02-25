@@ -1,12 +1,13 @@
 [![Build Status](https://travis-ci.org/opspec-pkgs/_.pkg.create.svg?branch=master)](https://travis-ci.org/opspec-pkgs/_.pkg.create)
 
+
 # Problem statement
 
 Internal pkg for opspec-pkgs/maintainers which automates creation of an official pkg.
 
 includes:
 - creation of github repo
-- adding maintainers team as admins of repo
+- granting [opspec-pkgs/maintainers team](https://github.com/orgs/opspec-pkgs/teams/maintainers/members) admin permissions
 - cloning github repo
 - generation of op.yml
 - running [bootstrap](https://github.com/opspec-pkgs/_.pkg.bootstrap)
