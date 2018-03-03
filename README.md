@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/opspec-pkgs/_.pkg.create.svg?branch=master)](https://travis-ci.org/opspec-pkgs/_.pkg.create)
 
-
 # Problem statement
 
 Internal pkg for opspec-pkgs/maintainers which automates creation of an official pkg.
@@ -35,15 +34,15 @@ opctl run github.com/opspec-pkgs/_.pkg.create#2.0.0
 
 ```yaml
 op:
-pkg: { ref: github.com/opspec-pkgs/_.pkg.create#2.0.0 }
-inputs:
-    description:
+  pkg: { ref: github.com/opspec-pkgs/_.pkg.create#2.0.0 }
+  inputs:
     githubAccessToken:
     githubUsername:
     name:
+    description:
     # params w/ default
     srcDir:
-outputs:
+  outputs:
     srcDir:
 ```
 
