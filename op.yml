@@ -1,6 +1,6 @@
-name: github.com/opspec-pkgs/_.pkg.create
+name: github.com/opspec-pkgs/_.op.create
 description: |
-  Internal pkg for opspec-pkgs/maintainers which automates creation of an official pkg.
+  internal op for opspec-pkgs/maintainers which automates creation of an official op.
 
   includes:
   - creation of github repo
@@ -31,20 +31,20 @@ inputs:
   description:
     string:
       constraints: { minLength: 1 }
-      description: description of the pkg
+      description: description of the op
   srcDir:
     dir:
-      description: pkg will be initialized and cloned to `name` subdir
+      description: op will be initialized and cloned to `name` subdir
       default: .
 outputs:
   srcDir:
     dir:
-      description: as provided plus a new subdir containing initialized pkg
+      description: as provided plus a new subdir containing initialized op
 version: 2.0.0
 run:
   serial:
     - op:
-        pkg: { ref: github.com/opspec-pkgs/github.repo.create#1.0.0 }
+        pkg: { ref: github.com/opspec-pkgs/github.repo.create#1.1.0 }
         inputs:
           name:
           accessToken: $(githubAccessToken)
@@ -52,7 +52,7 @@ run:
           isWikiEnabled: 'false'
           org: opspec-pkgs
     - op:
-        pkg: { ref: github.com/opspec-pkgs/github.repo.team.add#1.0.0 }
+        pkg: { ref: github.com/opspec-pkgs/github.repo.team.add#1.1.0 }
         inputs:
           accessToken: $(githubAccessToken)
           repo: $(name)
@@ -60,7 +60,7 @@ run:
           org: opspec-pkgs
           permission: admin
     - op:
-        pkg: { ref: github.com/opspec-pkgs/travis-ci.enable#1.0.1 }
+        pkg: { ref: github.com/opspec-pkgs/travis-ci.enable#1.1.0 }
         inputs:
           githubAccessToken:
           repo: opspec-pkgs/$(name)
@@ -88,7 +88,7 @@ run:
         outputs:
           srcDir:
     - op:
-        pkg: { ref: github.com/opspec-pkgs/git.clone-https#1.0.0 }
+        pkg: { ref: github.com/opspec-pkgs/git.repo.clone-https#1.0.0 }
         inputs:
           url: https://github.com/opspec-pkgs/$(name).git
           username: $(githubUsername)
