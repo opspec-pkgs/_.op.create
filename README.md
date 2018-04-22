@@ -14,32 +14,32 @@ includes:
 
 # Format
 
-this version of the pkg is in [![opspec 0.1.5](https://img.shields.io/badge/opspec-0.1.5-brightgreen.svg?colorA=6b6b6b&colorB=fc16be)](https://opspec.io/0.1.5/packages.html) format
+the op uses [![opspec 0.1.6](https://img.shields.io/badge/opspec-0.1.6-brightgreen.svg?colorA=6b6b6b&colorB=fc16be)](https://opspec.io/0.1.6) definition format
 
 # Example usage
 
 ## Install
 
 ```shell
-opctl pkg install github.com/opspec-pkgs/_.op.create#2.0.0
+opctl op install github.com/opspec-pkgs/_.op.create#3.0.0
 ```
 
 ## Run
 
 ```
-opctl run github.com/opspec-pkgs/_.op.create#2.0.0
+opctl run github.com/opspec-pkgs/_.op.create#3.0.0
 ```
 
 ## Compose
 
 ```yaml
 op:
-  pkg: { ref: github.com/opspec-pkgs/_.op.create#2.0.0 }
+  ref: github.com/opspec-pkgs/_.op.create#3.0.0
   inputs:
+    description:
     githubAccessToken:
     githubUsername:
     name:
-    description:
     # params w/ default
     srcDir:
   outputs:

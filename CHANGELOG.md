@@ -5,6 +5,15 @@ All notable changes will be documented in this file in accordance with
 
 ## \[Unreleased]
 
+## \[3.0.0] - 2018-04-21
+
+### Added
+- opspec v0.1.6 support
+
+### Removed
+
+- opspec v0.1.5 support
+
 ## \[2.0.0] - 2018-02-24
 
 ### Added

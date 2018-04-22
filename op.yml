@@ -40,11 +40,12 @@ outputs:
   srcDir:
     dir:
       description: as provided plus a new subdir containing initialized op
-version: 2.0.0
+opspec: 0.1.6
+version: 3.0.0
 run:
   serial:
     - op:
-        pkg: { ref: github.com/opspec-pkgs/github.repo.create#1.1.0 }
+        ref: github.com/opspec-pkgs/github.repo.create#1.1.0
         inputs:
           name:
           accessToken: $(githubAccessToken)
@@ -52,7 +53,7 @@ run:
           isWikiEnabled: 'false'
           org: opspec-pkgs
     - op:
-        pkg: { ref: github.com/opspec-pkgs/github.repo.team.add#1.1.0 }
+        ref: github.com/opspec-pkgs/github.repo.team.add#1.1.0
         inputs:
           accessToken: $(githubAccessToken)
           repo: $(name)
@@ -60,12 +61,12 @@ run:
           org: opspec-pkgs
           permission: admin
     - op:
-        pkg: { ref: github.com/opspec-pkgs/travis-ci.enable#1.1.0 }
+        ref: github.com/opspec-pkgs/travis-ci.enable#1.1.0
         inputs:
           githubAccessToken:
           repo: opspec-pkgs/$(name)
     - op:
-        pkg: { ref: github.com/opspec-pkgs/handlebarsjs.render-dir#1.0.0 }
+        ref: github.com/opspec-pkgs/handlebarsjs.render-dir#1.0.0
         inputs:
           data:
             name: github.com/opspec-pkgs/$(name)
@@ -74,13 +75,13 @@ run:
         outputs:
           renderedPkg: result
     - op:
-        pkg: { ref: github.com/opspec-pkgs/_.pkg.bootstrap#1.0.0 }
+        ref: github.com/opspec-pkgs/_.pkg.bootstrap#2.0.0
         inputs:
           srcDir: $(renderedPkg)
         outputs:
           bootstrappedPkg: srcDir
     - op:
-        pkg: { ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0}
+        ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0
         inputs:
           src: $(bootstrappedPkg)
           dst: $(srcDir)
@@ -88,7 +89,7 @@ run:
         outputs:
           srcDir:
     - op:
-        pkg: { ref: github.com/opspec-pkgs/git.repo.clone-https#1.0.0 }
+        ref: github.com/opspec-pkgs/git.repo.clone-https#1.0.0
         inputs:
           url: https://github.com/opspec-pkgs/$(name).git
           username: $(githubUsername)
@@ -96,7 +97,7 @@ run:
         outputs:
           clonedGitRepo: repo
     - op:
-        pkg: { ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0}
+        ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0
         inputs:
           src: $(clonedGitRepo)
           dst: $(srcDir)
