@@ -5,6 +5,11 @@ All notable changes will be documented in this file in accordance with
 
 ## \[Unreleased]
 
+## \[3.2.0] - 2019-01-28
+
+### Added
+- generate w/ _op.bootstrap#2.2.0
+
 ## \[3.1.0] - 2018-10-08
 
 ### Added
