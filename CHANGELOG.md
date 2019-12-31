@@ -5,6 +5,11 @@ All notable changes will be documented in this file in accordance with
 
 ## \[Unreleased]
 
+## \[3.3.0] - 2019-12-30
+
+### Changed
+- no longer require manual travis activation; use github app integration
+
 ## \[3.2.0] - 2019-01-28
 
 ### Added
