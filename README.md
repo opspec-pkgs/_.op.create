@@ -36,13 +36,12 @@ opctl run github.com/opspec-pkgs/_.op.create#3.3.0
 op:
   ref: github.com/opspec-pkgs/_.op.create#3.3.0
   inputs:
-    # required
-    description:
-    githubAccessToken:
-    githubUsername:
-    name:
-    ### optional; uncomment to override default(s)
-    # srcDir: .
+    description:  # 👈 required; provide a value
+    githubAccessToken:  # 👈 required; provide a value
+    githubUsername:  # 👈 required; provide a value
+    name:  # 👈 required; provide a value
+  ## uncomment to override defaults
+  #   srcDir: .
   outputs:
     srcDir:
 ```
