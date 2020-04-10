@@ -66,7 +66,7 @@ run:
         outputs:
           renderedPkg: result
     - op:
-        ref: github.com/opspec-pkgs/_.pkg.bootstrap#2.2.0
+        ref: github.com/opspec-pkgs/_.pkg.bootstrap#2.2.2
         inputs:
           srcDir: $(renderedPkg)
         outputs:
