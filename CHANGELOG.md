@@ -4,6 +4,7 @@ All notable changes will be documented in this file in accordance with
 [![keepachangelog 1.0.0](https://img.shields.io/badge/keepachangelog-1.0.0-brightgreen.svg)](http://keepachangelog.com/en/1.0.0/)
 
 ## \[Unreleased]
+## \[3.3.1] - 2020-04-10
 
 ### Added
 - generate w/ _op.bootstrap#2.2.2
