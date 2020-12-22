@@ -36,8 +36,7 @@ outputs:
   srcDir:
     dir:
       description: as provided plus a new subdir containing initialized op
-opspec: 0.1.6
-version: 3.3.1
+version: 4.0.0
 run:
   serial:
     - op:
@@ -64,13 +63,13 @@ run:
             description: $(description)
           templates: $(/templates)
         outputs:
-          renderedPkg: result
+          result: $(renderedPkg)
     - op:
-        ref: github.com/opspec-pkgs/_.pkg.bootstrap#2.2.2
+        ref: github.com/opspec-pkgs/_.pkg.bootstrap#3.0.0
         inputs:
           srcDir: $(renderedPkg)
         outputs:
-          bootstrappedPkg: srcDir
+          srcDir: $(bootstrappedPkg)
     - op:
         ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0
         inputs:
@@ -86,7 +85,7 @@ run:
           username: $(githubUsername)
           password: $(githubAccessToken)
         outputs:
-          clonedGitRepo: repo
+          repo: $(clonedGitRepo)
     - op:
         ref: github.com/opspec-pkgs/fs.cp-dir#2.0.0
         inputs:
