@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/opspec-pkgs/_.op.create/workflows/Build/badge.svg?branch=master)](https://github.com/opspec-pkgs/_.op.create/actions?query=workflow%3Abuild+branch%3Amaster)
+[![Build Status](https://github.com/opspec-pkgs/_.op.create/workflows/build/badge.svg?branch=master)](https://github.com/opspec-pkgs/_.op.create/actions?query=workflow%3Abuild+branch%3Amaster)
 
 # Problem statement
 
