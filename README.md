@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/opspec-pkgs/_.op.create.svg?branch=master)](https://travis-ci.org/opspec-pkgs/_.op.create)
+[![Build Status](https://github.com/opspec-pkgs/_.op.create/workflows/Build/badge.svg?branch=master)](https://github.com/opspec-pkgs/_.op.create/actions?query=workflow%3Abuild+branch%3Amaster)
 
 # Problem statement
 
@@ -12,29 +12,25 @@ includes:
 - running [bootstrap](https://github.com/opspec-pkgs/_.pkg.bootstrap)
 
 
-# Format
-
-the op uses [![opspec 0.1.6](https://img.shields.io/badge/opspec-0.1.6-brightgreen.svg?colorA=6b6b6b&colorB=fc16be)](https://opspec.io/0.1.6) definition format
-
 # Example usage
 
-## Install
+## Visualize
 
 ```shell
-opctl op install github.com/opspec-pkgs/_.op.create#3.3.1
+opctl ui github.com/opspec-pkgs/_.op.create#4.0.0
 ```
 
 ## Run
 
 ```
-opctl run github.com/opspec-pkgs/_.op.create#3.3.1
+opctl run github.com/opspec-pkgs/_.op.create#4.0.0
 ```
 
 ## Compose
 
 ```yaml
 op:
-  ref: github.com/opspec-pkgs/_.op.create#3.3.1
+  ref: github.com/opspec-pkgs/_.op.create#4.0.0
   inputs:
     description:  # 👈 required; provide a value
     githubAccessToken:  # 👈 required; provide a value
@@ -49,7 +45,7 @@ op:
 # Support
 
 join us on
-[![Slack](https://opctl-slackin.herokuapp.com/badge.svg)](https://opctl-slackin.herokuapp.com/)
+[![Slack](https://img.shields.io/badge/slack-opctl-E01563.svg)](https://join.slack.com/t/opctl/shared_invite/zt-51zodvjn-Ul_UXfkhqYLWZPQTvNPp5w)
 or
 [open an issue](https://github.com/opspec-pkgs/_.op.create/issues)
 
