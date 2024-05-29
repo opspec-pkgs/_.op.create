@@ -19,7 +19,7 @@ run:
         inputs:
           yaml: $(../../op.yml)
         outputs:
-          result: $(opDotYml
+          result: $(opDotYml)
     - op:
         ref: github.com/opspec-pkgs/git.repo.resolve-commit#1.0.2
         inputs: { dotGitDir: $(../../.git) }

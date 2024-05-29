@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/opspec-pkgs/_.op.create/workflows/build/badge.svg?branch=master)](https://github.com/opspec-pkgs/_.op.create/actions?query=workflow%3Abuild+branch%3Amaster)
+[![Build Status](https://github.com/opspec-pkgs/_.op.create/workflows/build/badge.svg?branch=main)](https://github.com/opspec-pkgs/_.op.create/actions?query=workflow%3Abuild+branch%3Amain)
 
 # Problem statement
 
@@ -17,20 +17,20 @@ includes:
 ## Visualize
 
 ```shell
-opctl ui github.com/opspec-pkgs/_.op.create#4.0.0
+opctl ui github.com/opspec-pkgs/_.op.create#4.0.1
 ```
 
 ## Run
 
 ```
-opctl run github.com/opspec-pkgs/_.op.create#4.0.0
+opctl run github.com/opspec-pkgs/_.op.create#4.0.1
 ```
 
 ## Compose
 
 ```yaml
 op:
-  ref: github.com/opspec-pkgs/_.op.create#4.0.0
+  ref: github.com/opspec-pkgs/_.op.create#4.0.1
   inputs:
     description:  # 👈 required; provide a value
     githubAccessToken:  # 👈 required; provide a value
@@ -59,4 +59,4 @@ and [tagged](https://git-scm.com/book/en/v2/Git-Basics-Tagging); see
 # Contributing
 
 see
-[project/CONTRIBUTING.md](https://github.com/opspec-pkgs/project/blob/master/CONTRIBUTING.md)
+[project/CONTRIBUTING.md](https://github.com/opspec-pkgs/project/blob/main/CONTRIBUTING.md)
